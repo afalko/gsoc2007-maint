@@ -1,0 +1,30 @@
+-- # Copyright 2007 Andrey Falko
+-- #
+-- # Program is distributed under the terms
+-- # of the GNU General Public License
+
+BEGIN TRANSACTION;
+CREATE TABLE user (
+displayName NOT NULL PRIMARY KEY,
+email NOT NULL,
+points INTEGER NOT NULL DEFAULT '0',
+dev INTEGER NOT NULL DEFAULT '0',
+passwd NOT NULL,
+validationCode DEFAULT NULL,
+registrationDate INTEGER NOT NULL,
+pref_tskpp DEFAULT NULL);
+CREATE TABLE task (
+taskID INTEGER PRIMARY KEY,
+taskDesc text collate nocase NOT NULL,
+link NOT NULL,
+status text collate nocase NOT NULL DEFAULT 'Reported',
+user_displayName NOT NULL,
+votes INTEGER NOT NULL DEFAULT '0',
+dateSubmitted INTEGER NOT NULL,
+dateModified INTEGER DEFAULT NULL,
+user_working DEFAULT NULL );
+CREATE TABLE vote (
+user_displayName NOT NULL,
+task_taskID NOT NULL,
+amount INTEGER NOT NULL );
+COMMIT;

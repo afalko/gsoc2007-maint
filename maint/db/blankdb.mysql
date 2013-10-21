@@ -1,0 +1,84 @@
+-- # Copyright 2007 Andrey Falko
+-- #
+-- # Program is distributed under the terms
+-- # of the GNU General Public License
+
+
+-- MySQL dump 10.11
+--
+-- Host: localhost    Database: tskdemo
+-- ------------------------------------------------------
+-- Server version	5.0.40-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Current Database: `tskdemo`
+--
+
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `tsk` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `tsk`;
+
+--
+-- Table structure for table `task`
+--
+
+DROP TABLE IF EXISTS `task`;
+CREATE TABLE `task` (
+  `taskID` int(10) unsigned NOT NULL auto_increment,
+  `taskDesc` char(255) NOT NULL,
+  `link` text NOT NULL,
+  `status` char(255) NOT NULL default 'Reported',
+  `user_displayName` char(50) NOT NULL,
+  `votes` int(11) NOT NULL default '0',
+  `dateSubmitted` int(20) NOT NULL,
+  `dateModified` int(20) default NULL,
+  `user_working` char(50) default NULL,
+  PRIMARY KEY  (`taskID`),
+  KEY `user_displayName` (`user_displayName`),
+  KEY `user_working` (`user_working`),
+  CONSTRAINT `task_ibfk_1` FOREIGN KEY (`user_displayName`) REFERENCES `user` (`displayName`),
+  CONSTRAINT `task_ibfk_2` FOREIGN KEY (`user_working`) REFERENCES `user` (`displayName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `displayName` char(50) NOT NULL,
+  `email` char(255) NOT NULL,
+  `points` int(10) unsigned NOT NULL default '0',
+  `dev` int(3) NOT NULL default '0',
+  `passwd` char(255) NOT NULL,
+  `validationCode` char(50) default NULL,
+  `registrationDate` int(20) NOT NULL,
+  `pref_tskpp` int(11) unsigned default NULL, 
+  PRIMARY KEY  (`displayName`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `vote`
+--
+
+DROP TABLE IF EXISTS `vote`;
+CREATE TABLE `vote` (
+  `user_displayName` char(50) NOT NULL,
+  `task_taskID` int(10) unsigned NOT NULL,
+  `amount` int(10) unsigned NOT NULL,
+  KEY `user_displayName` (`user_displayName`),
+  KEY `task_taskID` (`task_taskID`),
+  CONSTRAINT `vote_ibfk_1` FOREIGN KEY (`user_displayName`) REFERENCES `user` (`displayName`),
+  CONSTRAINT `vote_ibfk_2` FOREIGN KEY (`task_taskID`) REFERENCES `task` (`taskID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;

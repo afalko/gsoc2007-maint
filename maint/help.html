@@ -1,0 +1,83 @@
+<!# Copyright 2007 Andrey Falko
+#
+# Program is distributed under the terms
+# of the GNU General Public License>
+<html>
+<head>
+<title>Help</title>
+<link rel="stylesheet" type="text/css" href="interface.css" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+<h1>Help Page</h1><table border=0 width=100%><tr>
+                                <td WIDTH=9%></td>
+                                <td ALIGN=center><a href="index.cgi?">Return to Main</a></td>
+                                <td ALIGN=right width=9%><a href="help.html">Click here for help</a></td>
+
+                   </tr></table><p>
+<center><H2>Introduction</H2></center><p>
+Tsk is an interface that enables the developers of a project to determine which tasks are more 
+important in users' and other developers' eyes. The interface also gives users the ability to 
+bring attention to tasks they would like to see accomplished. Tsk also allows developers and 
+users to see and set the current status of tasks. Users can set four different task statuses: <br>
+<li>Reported</li>
+<li>Working</li>
+<li>Abandoned</li>
+<li>CommitReady</li><br><p>
+Developers have access to two more statuses:<br>
+<li>Committing</li>
+<li>Committed</li><p>
+
+<center><H2>Registering and Logging In</H2></center><p>
+Users who have not registered and logged in cannot vote, change the status of tasks, or add 
+tasks. To register, you need to supply your email and password of your choosing. If you 
+provided the correct email address, you will receive an email with a verification code. Copy 
+and paste this code into the <a href="verify.cgi">verification form</a>. Once you verify 
+your email, you will be able to login to the interface. <p>
+
+<center><H2>Voting</H2></center><p>
+Users and developers both have equal voting abilities. Everyone starts out with 50 points. These 
+50 points can be used to add votes to any task. The more votes a task receives, the higher up on 
+the task list it gets. If a task is too high, people can subtract voting points from it to lower 
+its position in the list. Here are some simple rules by which voting works: <br>
+<li>The points added to a task that gets committed are added back to the voters.</li>
+<li>On a weekly basis, voters with less than 50 points, get their points reset to 50.</li>
+<li>No user can add or subtract more points than he has available.</li><p>
+
+<center><H2>Statuses</H2></center><p>
+The following statuses are, and should be, set for the following reasons: <br>
+<li>Reported: When a task is submitted, it is given the reported status. Knowledge of the task's 
+existence has been provided.</li>
+<li>Working: A user marks a task as working if, and only if, they are working on the task. This 
+is designed to signal to others that working being done and that they will should not bother doing 
+duplicate work.</li>
+<li>Abandoned: If a task is marked working for more than three days, it automatically becomes marked 
+as abandoned. The assumption is that someone marked it working and forgot about the task. Users can 
+also mark tasks abandoned if they think work has been been stopped for a task. </li>
+<li>CommitReady: Once a user is finished working on a task and wants a developer to consider their 
+work for committal, they mark can mark a task as ready to commit. This status help developers looking 
+for finished work to test and commit.</li>
+<li>Committing: A developer sets this when he is in the process of testing and committing an allegedly 
+completed task. This status signals to other developers that they should not do duplicate work.</li>
+<li>Committed: A developer marks a task to this status once he has tested and committed a task. 
+This is equivalent to closing a task. All committed tasks are deleted from the task list after some 
+time.</li><p>
+
+<center><H2>Adding a Task</H2></center><p>
+You can add a task by clicking the <a href="addtask.cgi">add task</a> button on the top left of 
+task list table. Write a short description of the task and associate it with a web link that 
+points to a detailed description of the task. This detailed description is usually an existing 
+bug report, a thread in a forum, or a mailing list discussion. For your convenience you may enter 
+a <a href="http://www.bugzilla.org/">bugzilla</a> bug number for <a href="http://bugs.gentoo.org">
+Gentoo's bugzilla</a> instead of having to fish for the full link. <p>
+
+<center><H2>Modifying a Task</H2></center><p>
+After adding a task, you may modify your task's description, link, or both. Users can modify only 
+their own tasks. Developers may modify any tasks.
+
+<center><H2>Removing a Task</H2></center><p>
+You may delete any tasks you have submitted. Developers may delete tasks submitted by others. 
+
+
+</body>
+</html>

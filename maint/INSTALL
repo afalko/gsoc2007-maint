@@ -1,0 +1,37 @@
+Follow these instructions if you do not intend to 
+use the ebuild.
+
+1) Run:
+	make install
+
+2) If you want to use sqlite (which I recommend), 
+run:
+	make sqlite
+
+3) Move /etc/tsk.conf.example:
+	cp tsk.conf.example tsk.conf
+
+4) Edit tsk.conf by following the 
+comments in there.
+
+5) If you want to use mysql or another database 
+run:
+	tsk-db-manage 
+
+6) Copy the "web/" directory to where your would 
+like it to be. Configure your apache to have 
+the following: 
+
+<Directory "path/to/web/directory">
+	AllowOverride All
+</Directory>
+
+7) Inside your web/ directory run:
+cp htaccess .htaccess
+
+8) As root, run tsk-daemon
+
+9) If the interface is not usable, then you have 
+to change permissions to the files in /var/db/tsk 
+and /var/run/tsk to be readable by your apache 
+user.

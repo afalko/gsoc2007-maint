@@ -1,0 +1,22 @@
+#!/sbin/runscript
+# Copyright 2007 Andrey Falko
+#
+# Program is distributed under the terms
+# of the GNU General Public License
+
+depend() {
+        need apache2 mysql
+}
+
+start() {
+        ebegin "Starting tsk-daemon"
+	start-stop-daemon --start --chuid apache --pidfile /var/run/tsk-daemon.pid --make-pidfile \
+		--exec /usr/bin/perl /usr/bin/tsk-daemon
+        eend $?
+}
+
+stop() {
+        ebegin "Stopping tsk-daemon"
+        start-stop-daemon --stop --quiet --pidfile /var/run/tsk-daemon.pid
+        eend $?
+}

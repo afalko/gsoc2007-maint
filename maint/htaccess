@@ -1,0 +1,6 @@
+DirectoryIndex index.cgi
+Options +ExecCGI
+AddHandler cgi-script .cgi
+<FilesMatch ^(.*\.pm|.*\.pl|.*\.conf.*|.*\.rc|.*\.mysql|.*\.sqlite|Makefile)$>
+  deny from all
+</FilesMatch>

@@ -1,0 +1,100 @@
+# Configuration file for tsk
+
+# General Settings:
+#
+
+tskPath = /usr/bin/tsk
+
+organization = Gentoo Linux
+
+admin email = andrey@afalko.homelinux.net
+
+bugzilla location = http://bugs.gentoo.org/
+
+log file = /var/log/tsk/tsk.log
+
+# How fast a task will disappear from the list after it 
+# is committed. Value is in seconds. If you do not want 
+# committed tasks to disappear, set this to "none". 
+committed task delete interval = 3600
+
+# After what time everyone's voting points will regenerate.
+# Value is in seconds. To disable vote regenation, set 
+# this field to "none".
+vote reset period = 604800
+
+mark abandoned after = 604800
+
+# Value is in seconds. Default is 3 days (259200 seconds).
+time to give users to validate = 259200
+
+# The refresh rate is how often the tsk daemon 
+# checks the database. Value is in seconds. Setting 
+# it too low will degrade tsk's performance. Setting it 
+# higher than one week (60*60*24*7) will take away the 
+# purpose of the daemon all together. 
+
+daemon refresh rate = 60
+
+# The following regex determines who 
+# has developer status. You can do for 
+# example: .+gentoo.org, which will give 
+# anyone with a gentoo.org email address 
+# developer status. 
+#
+# Note that this regex 
+# checks the emails people are registering 
+# with. This is one of the reasons we 
+# validate emails ;).
+#
+# Do not include spaces. 
+developer regex = \@gentoo.org$
+
+# Database settings:
+# At the moment, the only supported databases are:
+# mysql (many features are broken at the moment)
+# sqlite
+dbType = 
+
+dbName = 
+
+dbUsr = 
+
+dbPasswd = 
+
+# Default settings
+
+default vote points = 50
+
+default tasks per page = 25
+
+sendmailPath = /usr/sbin/sendmail
+
+# When tsk sends out an email, where who would you like 
+# to be in the "From: " header:
+email from = tsk@gentoo.org
+
+location of tsk on your web space = tsk.gentoo.org
+
+# Seperate user with ":", but leave no spaces in between users
+# You can find the ids associated with the users in /etc/passwd
+# 
+# Example
+# privledged user ids = 1000:81, where 1000 is the user "andrey" 
+# and 81 is "apache" on my computer.
+privledged user ids = 
+
+# Only change the cache location if you know what you are doing. 
+# You will have to modify the code in tsk to make your custom 
+# chache location work.
+cache location = /var/run/tsk/tsk.cache
+
+apache user = apache
+
+apache group = apache
+
+# Set debug to 0 to turn it off.
+debug = 0
+
+# Directory where the blankdbs reside.
+libdir = /usr/lib/tsk/

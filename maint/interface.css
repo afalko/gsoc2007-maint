@@ -1,0 +1,14 @@
+/* # Copyright 2007 Andrey Falko
+* #
+* # Program is distributed under the terms
+* # of the GNU General Public License */
+
+h1      { text-align: center }
+
+p 	{ margin-top: 1; text-indent: 15px }
+
+a:link { color: #7A5ADA }
+a:visited { color: #7A5ADA }
+a:hover { color: #FF6600;
+          background-color: #FFFFFF }
+a:active { color: #333333 }
